@@ -19,18 +19,18 @@ handler = WebhookHandler(config.get('line-bot', 'channel_secret'))
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('cron', day_of_week='mon-fri', minute='*/20')
+@sched.scheduled_job('cron', day_of_week='mon-fri', minute='*/1')
 def scheduled_job():
     print('========== APScheduler CRON =========')
-    print('This job runs every weekday */20 min.')
+    print('This job runs every weekday */1 min.')
     print(f'{datetime.datetime.now().ctime()}')
     print('========== APScheduler CRON =========')
 
-    url = "https://你-APP-的名字.herokuapp.com/"
-    conn = urllib.request.urlopen(url)
-
-    for key, value in conn.getheaders():
-        print(key, value)
+    # url = "https://你-APP-的名字.herokuapp.com/"
+    # conn = urllib.request.urlopen(url)
+    #
+    # for key, value in conn.getheaders():
+    #     print(key, value)
         
 
 @sched.scheduled_job('cron', day_of_week='mon-fri', hour=6, minute=30)
